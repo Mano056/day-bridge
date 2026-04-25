@@ -38,7 +38,7 @@ def service_gmail():
 
 def read_emails(service, max_results=5):
     try:
-        results = service.users().messages().list(userId="me", maxResults=max_results).execute()
+        results = service.users().messages().list(userId="me", labelIds="INBOX", maxResults=max_results).execute()
         message_refs = results.get("messages", [])
     except HttpError as e:
         print(f"An error occured: {e}")
